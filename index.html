@@ -4,8 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SBI Group</title>
-<meta name="description" content="SBI Group d.o.o. Podgorica – ekskluzivni uvoznik, distributer i zastupnik evropskih brendova na tržištu Crne Gore. 37 brendova, sva četiri vodeća trgovačka lanca, isporuka 24–48h.">
+<meta name="description" content="SBI Group d.o.o. Podgorica – ekskluzivni uvoznik, distributer i zastupnik evropskih brendova na tržištu Crne Gore. 39 brendova, sva četiri vodeća trgovačka lanca, isporuka 24–48h.">
 <meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="SBI Group – ekskluzivni distributer evropskih brendova u Crnoj Gori">
+<meta property="og:description" content="Uvoz, distribucija i zastupanje 39 evropskih FMCG brendova. Sva četiri vodeća lanca, 350+ prodajnih objekata, isporuka 24–48h.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/sbi-logo.png">
 <meta name="theme-color" content="#1B3A5C">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +18,7 @@
 :root{
   --navy:#1B3A5C; --navy-deep:#12283F; --orange:#F5921E; --orange-deep:#D97A0C;
   --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F3F6FA; --ink:#1B2A3A; --muted:#5E6E80; --line:#DDE5EE;
-  --on-navy:#FFFFFF; --on-navy-muted:#B9C9DC;
+  --orange-text:#A85A00; --on-navy:#FFFFFF; --on-navy-muted:#B9C9DC;
   --display:"Manrope",system-ui,"Segoe UI",Arial,sans-serif;
   --body:"Public Sans",system-ui,"Segoe UI",Arial,sans-serif;
   --radius:14px; --shadow:0 12px 32px -20px rgba(27,58,92,.35);
@@ -23,16 +27,16 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0F1A28; --surface:#142235; --surface-2:#1B2B40; --ink:#E8EEF6; --muted:#9FB0C3; --line:#26374D;
-    --navy:#132A44; --navy-deep:#0B1826; --shadow:0 12px 32px -20px rgba(0,0,0,.7); color-scheme:dark;
+    --navy:#132A44; --navy-deep:#0B1826; --orange-text:#F5A54A; --shadow:0 12px 32px -20px rgba(0,0,0,.7); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#0F1A28; --surface:#142235; --surface-2:#1B2B40; --ink:#E8EEF6; --muted:#9FB0C3; --line:#26374D;
-  --navy:#132A44; --navy-deep:#0B1826; --shadow:0 12px 32px -20px rgba(0,0,0,.7); color-scheme:dark;
+  --navy:#132A44; --navy-deep:#0B1826; --orange-text:#F5A54A; --shadow:0 12px 32px -20px rgba(0,0,0,.7); color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} .mq-btn{display:none} }
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -44,7 +48,7 @@ h3{font-size:1.15rem;font-weight:700}
 p{margin:0}
 .wrap{width:min(1180px,100% - 2*clamp(16px,4vw,40px));margin-inline:auto}
 .wrap>*,.grid>*,.card>*,.chain>*,.step>*,.steps>*,.form>*{min-width:0}
-.eyebrow{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-text)}
 .lead{color:var(--muted);font-size:1.08rem;max-width:64ch}
 section{padding-block:clamp(56px,8vw,104px)}
 .sec-head{display:grid;gap:12px;max-width:760px;margin-bottom:clamp(28px,4vw,48px)}
@@ -206,11 +210,26 @@ section{padding-block:clamp(56px,8vw,104px)}
 .form .btn{justify-self:start}
 .form small{color:var(--on-navy-muted)}
 
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--orange);color:#1B2A3A;font:700 .95rem var(--display);padding:10px 16px;border-radius:999px;text-decoration:none}
+.skip:focus{top:12px}
+.wordmark{height:64px;width:100%;display:grid;place-items:center;font:800 1.7rem/1 var(--display);color:#1B3A5C;letter-spacing:.02em;text-transform:uppercase}
+.marquee{position:relative}
+.marquee.paused .track{animation-play-state:paused}
+.mq-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.mq-btn svg{width:14px;height:14px}
+.form .full{grid-column:1/-1}
+.form select{width:100%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;border-radius:10px;padding:12px 14px;font:400 1rem var(--body)}
+.form select option{color:#1B2A3A}
+.form [aria-invalid="true"]{border-color:#FFC77A;box-shadow:0 0 0 2px rgba(255,199,122,.35)}
+.fallback{display:none;gap:8px;background:rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;font-size:.92rem}
+.fallback.show{display:grid}
+.fallback button{justify-self:start;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 .85rem var(--display);padding:8px 14px;border-radius:999px;cursor:pointer}
 footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.88rem;padding-block:22px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
+<a class="skip" href="#brendovi" data-t="skip">Preskoči na sadržaj</a>
 
 <header class="nav">
   <div class="wrap">
@@ -235,7 +254,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow" data-t="hero.eyebrow">Uvoz · Distribucija · Zastupanje brendova · Crna Gora</p>
-    <h1 data-t="hero.title">Ekskluzivni distributer <b>svjetskih brendova</b> u Crnoj Gori</h1>
+    <h1 data-t="hero.title">Ekskluzivni distributer <b>evropskih brendova</b> u Crnoj Gori</h1>
     <p class="lead" data-t="hero.lead">Od 2018. godine uvozimo, distribuiramo i ekskluzivno zastupamo renomirane evropske brendove – od proizvođača do police u svakom dijelu Crne Gore.</p>
     <div class="cta">
       <a class="btn btn-primary" href="#brendovi" data-t="hero.cta1">Pogledaj brendove</a>
@@ -244,14 +263,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+<div class="marquee" id="marquee"><div class="track" id="track" aria-hidden="true"></div><button type="button" class="mq-btn" id="mqBtn" aria-pressed="false" aria-label="Pauziraj traku sa logoima"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button></div>
 
 <section id="brendovi">
   <div class="wrap">
     <div class="sec-head center">
       <p class="eyebrow" data-t="brands.eyebrow">Portfolio</p>
       <h2 data-t="brands.title">Brand <b>partneri</b></h2>
-      <p class="lead" data-t="brands.lead">SBI Group njeguje dugoročne odnose sa evropskim proizvođačima i ekskluzivno zastupa 37 brendova iz više od deset zemalja – plus sezonski novogodišnji program.</p>
+      <p class="lead" data-t="brands.lead">SBI Group njeguje dugoročne odnose sa evropskim proizvođačima i ekskluzivno zastupa {total} brendova iz više od deset zemalja – plus sezonski novogodišnji program.</p>
     </div>
     <div class="filters" id="filters" role="group" aria-label="Kategorije">
       <button type="button" data-cat="all" aria-pressed="true" data-t="cat.all">Svi brendovi</button>
@@ -265,14 +284,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       <button type="button" data-cat="sport" aria-pressed="false" data-t="cat.sport">Sport i zdrava ishrana</button>
     </div>
     <div class="logos" id="logos"></div>
-    <p class="brand-count" id="brandCount"></p>
+    <p class="brand-count" id="brandCount" role="status" aria-live="polite"></p>
   </div>
 </section>
 
 <div class="band" aria-label="SBI Group u brojkama">
   <div class="wrap">
     <div><b>2018.</b><span data-t="stat.founded">godina osnivanja, Podgorica</span></div>
-    <div><b>37</b><span data-t="stat.brands">brendova u portfoliju</span></div>
+    <div><b id="statBrands">39</b><span data-t="stat.brands">brendova u portfoliju</span></div>
     <div><b>4 / 4</b><span data-t="stat.chains">vodeća trgovačka lanca</span></div>
     <div><b>350+</b><span data-t="stat.pos">prodajnih objekata</span></div>
     <div><b>24–48h</b><span data-t="stat.delivery">isporuka širom Crne Gore</span></div>
@@ -410,7 +429,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       <div class="card"><div class="icon o" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10v4h3l6 4V6L6 10H3z"/><path d="M16 9a4 4 0 010 6"/></svg></div><h3 data-t="why.3.t">Marketing i merchandising</h3><p data-t="why.3.p">Akcije i letci u lancima, promocije, uredne police i praćenje izlaganja kroz Team Support.</p></div>
       <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16"/><path d="M6 16l4-5 3 3 5-7"/></svg></div><h3 data-t="why.4.t">Podaci i transparentnost</h3><p data-t="why.4.p">Redovni sell-in / sell-out izvještaji po objektu i artiklu, planiranje zaliha i narudžbi.</p></div>
       <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3 data-t="why.5.t">Brzina i fleksibilnost</h3><p data-t="why.5.p">Mala, iskusna ekipa – brze odluke i direktna komunikacija sa vlasnicima i menadžmentom.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/></svg></div><h3 data-t="why.6.t">Provjereno iskustvo</h3><p data-t="why.6.p">Od 2018. uspješno smo uveli i razvili 37 evropskih brendova na tržištu Crne Gore.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/></svg></div><h3 data-t="why.6.t">Provjereno iskustvo</h3><p data-t="why.6.p">Od 2018. uspješno smo uveli i razvili {total} evropskih brendova na tržištu Crne Gore.</p></div>
     </div>
   </div>
 </section>
@@ -427,6 +446,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
         <li><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b data-t="contact.addr">Adresa</b>SBI GROUP d.o.o. Podgorica<br>Ul. Baku 104, 81000 Podgorica, <span data-t="contact.country">Crna Gora</span></div></li>
         <li><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><b data-t="contact.phone">Telefon</b><a href="tel:+38267226664">+382 67 226 664</a></div></li>
         <li><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>E-mail</b><a href="mailto:office@sbigroup.me">office@sbigroup.me</a></div></li>
+        <li><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-5 9 5v11H3V10z"/><path d="M7 21v-7h10v7"/><path d="M7 17h10"/></svg></div><div><b data-t="contact.wh">Skladište i distribucija</b>NTC Logistics, Kapino polje bb, 81400 Nikšić</div></li>
       </ul>
     </div>
     <form class="form" id="contactForm" novalidate>
@@ -440,9 +460,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
         <label for="f-email"><span>E-mail</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
         <label for="f-phone"><span data-t="form.phone">Telefon</span><input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
       </div>
+      <label for="f-type" class="full"><span data-t="form.type">Upit se odnosi na</span><select id="f-type" name="type">
+        <option value="brand" data-t="form.type.brand">Zastupanje brenda u Crnoj Gori</option>
+        <option value="buyer" data-t="form.type.buyer">Nabavka robe za prodajni objekat</option>
+        <option value="other" data-t="form.type.other">Ostalo</option>
+      </select></label>
       <label for="f-msg"><span data-t="form.msg">Poruka</span><textarea id="f-msg" name="message" required></textarea></label>
       <button class="btn btn-primary" type="submit" data-t="form.send">Pošalji upit</button>
-      <small id="formHint" data-t="form.hint">Odgovaramo u roku od dva radna dana.</small>
+      <small id="formHint" role="status" aria-live="polite" data-t="form.hint">Odgovaramo u roku od dva radna dana.</small>
+      <div class="fallback" id="fallback"><span data-t="form.fb">Ako se e-mail program nije otvorio, kopirajte poruku i pošaljite je na office@sbigroup.me.</span><button type="button" id="copyBtn" data-t="form.copy">Kopiraj poruku</button></div>
     </form>
   </div>
 </section>
@@ -450,7 +476,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year">2026</span> SBI Group d.o.o. Podgorica</span>
+    <span>© <span id="year">2026</span> SBI Group d.o.o. Podgorica · PIB 03221911</span>
     <span>office@sbigroup.me · +382 67 226 664</span>
   </div>
 </footer>
@@ -460,22 +486,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
   var BRANDS = [
     ["loacker","Loacker","slatko"],["flis","Flis","slatko"],["balocco","Balocco","slatko"],["lazzaroni","Lazzaroni","slatko"],
     ["st-michel","St Michel","slatko"],["griesson","Griesson","slatko"],["antonelli","Antonelli","slatko"],["barkleys","Barkleys","slatko"],
-    ["nocilla","Nocilla","slatko"],["kidsworld","Kids World","slatko"],["na-eks","Na eks","slatko"],["noble","Noble · NashiDay","slatko"],
+    ["nocilla","Nocilla","slatko"],["kidsworld","Kids World","slatko"],["na-eks","Na eks","slatko"],["noble","Noble · NashiDay","slatko"],["novi","Novi","slatko","txt"],
     ["riscossa","Riscossa","mediteran"],["sacla","Saclà","mediteran"],["polli","Polli","mediteran"],["farchioni","Farchioni","mediteran"],
     ["la-masseria","La Masseria","mediteran"],["as-do-mar","As do Mar","mediteran"],
     ["deleco","Deleco","konzerva"],["capsi-food","Capsi Food","konzerva"],["gerlinger","Gierlinger","konzerva"],
     ["granarolo","Granarolo","mlijecno"],["sterilgarda","Sterilgarda","mlijecno"],["happy-cow","Happy Cow","mlijecno"],
     ["vitago","VitaGo","pica"],["bitburger","Bitburger","pica"],["nenico","Nenico · Titan","pica"],["kontesa-group","Kontesa Group","pica"],
     ["crik-crok","Crik Crok","grickalice"],["spak","Spak","grickalice"],["novogodisnji-program","%season%","grickalice"],
-    ["dash","Dash","hemija"],["pink","The Pink Stuff","hemija"],["dita","Dita","hemija"],["medix","Medix","hemija"],["perfetto","Perfetto Professional","hemija"],
+    ["dash","Dash","hemija"],["pink","The Pink Stuff","hemija"],["dita","Dita","hemija"],["medix","Medix","hemija"],["perfetto","Perfetto Professional","hemija"],["lavex","Lavex","hemija","txt"],
     ["polleo-sport","Polleo Sport","sport"],["carpona","Carpona","sport"]
   ];
+  var TOTAL = BRANDS.filter(function(b){ return b[1] !== "%season%"; }).length;
+  document.getElementById("statBrands").textContent = TOTAL;
   var MARQUEE = ["loacker","riscossa","granarolo","sacla","nocilla","dash","pink","balocco","st-michel","griesson","barkleys","farchioni","sterilgarda","bitburger","polleo-sport","medix"];
   var I18N = {
     cg: {
       "nav.about":"O nama","nav.what":"Distribucija","nav.market":"Tržište","nav.brands":"Brendovi","nav.why":"Partnerstvo","nav.contact":"Kontakt",
       "hero.eyebrow":"Uvoz · Distribucija · Zastupanje brendova · Crna Gora",
-      "hero.title":"Ekskluzivni distributer <b>svjetskih brendova</b> u Crnoj Gori",
+      "hero.title":"Ekskluzivni distributer <b>evropskih brendova</b> u Crnoj Gori",
       "hero.lead":"Od 2018. godine uvozimo, distribuiramo i ekskluzivno zastupamo renomirane evropske brendove – od proizvođača do police u svakom dijelu Crne Gore.",
       "hero.cta1":"Pogledaj brendove","hero.cta2":"Postani partner",
       "stat.founded":"godina osnivanja, Podgorica","stat.brands":"brendova u portfoliju","stat.chains":"vodeća trgovačka lanca","stat.pos":"prodajnih objekata","stat.delivery":"isporuka širom Crne Gore",
@@ -507,10 +535,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "flow.5.t":"Polica i kupac","flow.5.p":"Lanci i TT kanal – uz praćenje sell-in i sell-out prodaje",
       "flow.note":"<strong>Transparentno izvještavanje.</strong> Partnerima dostavljamo redovne izvještaje o prodaji, zalihama i akcijama po objektu i artiklu.",
       "brands.eyebrow":"Portfolio","brands.title":"Brand <b>partneri</b>",
-      "brands.lead":"SBI Group njeguje dugoročne odnose sa evropskim proizvođačima i ekskluzivno zastupa 37 brendova iz više od deset zemalja – plus sezonski novogodišnji program.",
+      "brands.lead":"SBI Group njeguje dugoročne odnose sa evropskim proizvođačima i ekskluzivno zastupa {total} brendova iz više od deset zemalja – plus sezonski novogodišnji program.",
       "cat.all":"Svi brendovi","cat.slatko":"Slatkiši, keks i vafli","cat.mediteran":"Tjestenina, ulja i mediteranska kuhinja","cat.konzerva":"Konzervirano, delikates i meso",
       "cat.mlijecno":"Mliječni program","cat.pica":"Pića","cat.grickalice":"Grickalice i sezonski program","cat.hemija":"Kućna hemija i higijena","cat.sport":"Sport i zdrava ishrana",
-      "season":"Novogodišnji program","count":"Prikazano {n} od 37 brendova + sezonski program",
+      "season":"Novogodišnji program","count":"Prikazano {n} od {total} brendova + sezonski program",
       "why.eyebrow":"Partnerstvo","why.title":"Zašto <b>SBI Group</b>",
       "why.lead":"Tražite distributera za Crnu Goru? Nudimo kompletno rješenje – od prve palete do redovne prisutnosti na svim policama.",
       "why.1.t":"Ekskluzivnost i fokus","why.1.p":"Svaki brend vodimo kao svoj – jasna strategija cijena, asortimana i pozicioniranja bez interne konkurencije.",
@@ -518,17 +546,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "why.3.t":"Marketing i merchandising","why.3.p":"Akcije i letci u lancima, promocije, uredne police i praćenje izlaganja kroz Team Support.",
       "why.4.t":"Podaci i transparentnost","why.4.p":"Redovni sell-in / sell-out izvještaji po objektu i artiklu, planiranje zaliha i narudžbi.",
       "why.5.t":"Brzina i fleksibilnost","why.5.p":"Mala, iskusna ekipa – brze odluke i direktna komunikacija sa vlasnicima i menadžmentom.",
-      "why.6.t":"Provjereno iskustvo","why.6.p":"Od 2018. uspješno smo uveli i razvili 37 evropskih brendova na tržištu Crne Gore.",
+      "why.6.t":"Provjereno iskustvo","why.6.p":"Od 2018. uspješno smo uveli i razvili {total} evropskih brendova na tržištu Crne Gore.",
       "contact.eyebrow":"Kontakt","contact.title":"Kontaktirajte <b>nas</b>","contact.lead":"Rado ćemo razgovarati o saradnji – bilo da zastupate brend ili tražite dobavljača za svoj objekat.",
-      "contact.addr":"Adresa","contact.country":"Crna Gora","contact.phone":"Telefon","contact.wh":"Skladište i distribucija","contact.whp":"(NTC Logistics)",
+      "contact.addr":"Adresa","contact.country":"Crna Gora","contact.phone":"Telefon","contact.wh":"Skladište i distribucija",
       "form.t":"Pošaljite upit","form.p":"Popunite formu – otvoriće se vaš e-mail program sa pripremljenom porukom za office@sbigroup.me.",
       "form.name":"Ime i prezime","form.company":"Kompanija","form.phone":"Telefon","form.msg":"Poruka","form.send":"Pošalji upit","form.hint":"Odgovaramo u roku od dva radna dana.",
-      "form.err":"Popunite ime, e-mail i poruku.","form.subject":"Upit sa sajta sbigroup.me"
+      "form.err":"Popunite označena polja: ime, ispravan e-mail i poruku.","form.subject":"Upit sa sajta sbigroup.me",
+      "form.type":"Upit se odnosi na","form.type.brand":"Zastupanje brenda u Crnoj Gori","form.type.buyer":"Nabavka robe za prodajni objekat","form.type.other":"Ostalo",
+      "form.sent":"Otvaramo vaš e-mail program sa pripremljenom porukom…","form.fb":"Ako se e-mail program nije otvorio, kopirajte poruku i pošaljite je na office@sbigroup.me.","form.copy":"Kopiraj poruku","form.copied":"Kopirano ✓",
+      "skip":"Preskoči na sadržaj","mq.pause":"Pauziraj traku sa logoima","mq.play":"Pokreni traku sa logoima"
     },
     en: {
       "nav.about":"About","nav.what":"Distribution","nav.market":"Market","nav.brands":"Brands","nav.why":"Partnership","nav.contact":"Contact",
       "hero.eyebrow":"Import · Distribution · Brand representation · Montenegro",
-      "hero.title":"Exclusive distributor of <b>world brands</b> in Montenegro",
+      "hero.title":"Exclusive distributor of <b>European brands</b> in Montenegro",
       "hero.lead":"Since 2018 we import, distribute and exclusively represent renowned European brands – from the producer to the shelf in every part of Montenegro.",
       "hero.cta1":"See our brands","hero.cta2":"Become a partner",
       "stat.founded":"founded, Podgorica","stat.brands":"brands in portfolio","stat.chains":"leading retail chains","stat.pos":"points of sale","stat.delivery":"delivery across Montenegro",
@@ -560,10 +591,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "flow.5.t":"Shelf & consumer","flow.5.p":"Retail chains and traditional trade – with sell-in and sell-out tracking",
       "flow.note":"<strong>Transparent reporting.</strong> Partners receive regular reports on sales, stock and promotions by store and by SKU.",
       "brands.eyebrow":"Portfolio","brands.title":"Brand <b>partners</b>",
-      "brands.lead":"SBI Group nurtures long-term relationships with European producers and exclusively represents 37 brands from more than ten countries – plus a seasonal Christmas programme.",
+      "brands.lead":"SBI Group nurtures long-term relationships with European producers and exclusively represents {total} brands from more than ten countries – plus a seasonal Christmas programme.",
       "cat.all":"All brands","cat.slatko":"Confectionery, biscuits & wafers","cat.mediteran":"Pasta, oils & Mediterranean cuisine","cat.konzerva":"Canned goods, deli & meat",
       "cat.mlijecno":"Dairy","cat.pica":"Beverages","cat.grickalice":"Snacks & seasonal programme","cat.hemija":"Household & cleaning","cat.sport":"Sports & healthy nutrition",
-      "season":"Christmas programme","count":"Showing {n} of 37 brands + seasonal programme",
+      "season":"Christmas programme","count":"Showing {n} of {total} brands + seasonal programme",
       "why.eyebrow":"Partnership","why.title":"Why <b>SBI Group</b>",
       "why.lead":"Looking for a distributor in Montenegro? We offer a complete solution – from the first pallet to permanent presence on every shelf.",
       "why.1.t":"Exclusivity and focus","why.1.p":"We run every brand as our own – a clear pricing, assortment and positioning strategy with no internal competition.",
@@ -571,12 +602,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "why.3.t":"Marketing and merchandising","why.3.p":"Promotions and leaflets in the chains, in-store activations, tidy shelves and display tracking via Team Support.",
       "why.4.t":"Data and transparency","why.4.p":"Regular sell-in / sell-out reports by store and SKU, stock and order planning.",
       "why.5.t":"Speed and flexibility","why.5.p":"A small, experienced team – fast decisions and direct communication with owners and management.",
-      "why.6.t":"Proven track record","why.6.p":"Since 2018 we have successfully launched and grown 37 European brands on the Montenegrin market.",
+      "why.6.t":"Proven track record","why.6.p":"Since 2018 we have successfully launched and grown {total} European brands on the Montenegrin market.",
       "contact.eyebrow":"Contact","contact.title":"Get in <b>touch</b>","contact.lead":"We would be glad to discuss a partnership – whether you represent a brand or need a supplier for your store.",
-      "contact.addr":"Address","contact.country":"Montenegro","contact.phone":"Phone","contact.wh":"Warehouse & distribution","contact.whp":"(NTC Logistics)",
+      "contact.addr":"Address","contact.country":"Montenegro","contact.phone":"Phone","contact.wh":"Warehouse & distribution",
       "form.t":"Send an enquiry","form.p":"Fill in the form – your e-mail client will open with a prepared message to office@sbigroup.me.",
       "form.name":"Full name","form.company":"Company","form.phone":"Phone","form.msg":"Message","form.send":"Send enquiry","form.hint":"We reply within two working days.",
-      "form.err":"Please fill in your name, e-mail and message.","form.subject":"Enquiry from sbigroup.me"
+      "form.err":"Please complete the highlighted fields: name, a valid e-mail and message.","form.subject":"Enquiry from sbigroup.me",
+      "form.type":"Your enquiry is about","form.type.brand":"Representing a brand in Montenegro","form.type.buyer":"Buying products for a store","form.type.other":"Other",
+      "form.sent":"Opening your e-mail client with a prepared message…","form.fb":"If your e-mail client did not open, copy the message and send it to office@sbigroup.me.","form.copy":"Copy message","form.copied":"Copied ✓",
+      "skip":"Skip to content","mq.pause":"Pause logo strip","mq.play":"Play logo strip"
     }
   };
   var lang = "cg";
@@ -591,15 +625,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     BRANDS.forEach(function(b){
       var name = b[1] === "%season%" ? t.season : b[1];
       var d = document.createElement("div"); d.className = "logo"; d.setAttribute("data-cat", b[2]);
-      d.hidden = !(current === "all" || current === b[2]); if (!d.hidden) n++;
-      d.innerHTML = '<img src="assets/logos/' + b[0] + '.png" alt="' + name + '" loading="lazy"><span>' + name + '</span>';
+      d.hidden = !(current === "all" || current === b[2]); if (!d.hidden && b[1] !== "%season%") n++;
+      d.innerHTML = (b[3] === "txt" ? '<div class="wordmark" aria-hidden="true">' + name + '</div>' : '<img src="assets/logos/' + b[0] + '.png" alt="" loading="lazy">') + '<span>' + name + '</span>';
       logosEl.appendChild(d);
     });
-    countEl.textContent = t.count.replace("{n}", n);
+    countEl.textContent = t.count.replace("{n}", n).replace("{total}", TOTAL);
   }
   function applyLang(){
     var t = I18N[lang];
-    document.querySelectorAll("[data-t]").forEach(function(el){ var k = el.getAttribute("data-t"); if (t[k] != null) el.innerHTML = t[k]; });
+    document.querySelectorAll("[data-t]").forEach(function(el){ var k = el.getAttribute("data-t"); if (t[k] != null) el.innerHTML = t[k].replace(/\{total\}/g, TOTAL); });
     document.documentElement.lang = lang === "en" ? "en" : "sr-Latn-ME";
     document.getElementById("langCg").setAttribute("aria-pressed", lang === "cg");
     document.getElementById("langEn").setAttribute("aria-pressed", lang === "en");
@@ -624,15 +658,38 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
   menuBtn.addEventListener("click", function(){ var open = menu.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", open); });
   menu.addEventListener("click", function(ev){ if (ev.target.tagName === "A") { menu.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); } });
 
-  // contact form -> mailto (no server needed)
-  document.getElementById("contactForm").addEventListener("submit", function(ev){
+  // marquee pause (WCAG 2.2.2)
+  var mq = document.getElementById("marquee"), mqBtn = document.getElementById("mqBtn");
+  var PAUSE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  var PLAY_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>';
+  mqBtn.addEventListener("click", function(){
+    var p = mq.classList.toggle("paused"); mqBtn.setAttribute("aria-pressed", p);
+    mqBtn.setAttribute("aria-label", I18N[lang][p ? "mq.play" : "mq.pause"]);
+    mqBtn.innerHTML = p ? PLAY_SVG : PAUSE_SVG;
+  });
+
+  // contact form -> mailto (no server needed), inline validation + copy fallback
+  var lastBody = "";
+  var form = document.getElementById("contactForm");
+  form.addEventListener("submit", function(ev){
     ev.preventDefault();
-    var t = I18N[lang], f = this, hint = document.getElementById("formHint");
-    var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
-    if (!name || !email || !msg) { hint.textContent = t["form.err"]; hint.style.color = "#FFC77A"; return; }
-    var body = name + (f.company.value ? " – " + f.company.value.trim() : "") + "\n" + email + (f.phone.value ? " · " + f.phone.value.trim() : "") + "\n\n" + msg;
-    window.location.href = "mailto:office@sbigroup.me?subject=" + encodeURIComponent(t["form.subject"]) + "&body=" + encodeURIComponent(body);
-    hint.textContent = t["form.hint"]; hint.style.color = "";
+    var t = I18N[lang], f = this, hint = document.getElementById("formHint"), bad = [];
+    [f.name, f.email, f.message].forEach(function(el){
+      var v = el.value.trim();
+      var ok = v !== "" && (el !== f.email || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
+      el.setAttribute("aria-invalid", !ok); if (!ok) bad.push(el);
+    });
+    if (bad.length) { hint.textContent = t["form.err"]; hint.style.color = "#FFC77A"; bad[0].focus(); return; }
+    var type = f.type.options[f.type.selectedIndex].text;
+    lastBody = type + "\n\n" + f.name.value.trim() + (f.company.value ? " – " + f.company.value.trim() : "") + "\n" + f.email.value.trim() + (f.phone.value ? " · " + f.phone.value.trim() : "") + "\n\n" + f.message.value.trim();
+    window.location.href = "mailto:office@sbigroup.me?subject=" + encodeURIComponent(t["form.subject"] + " – " + type) + "&body=" + encodeURIComponent(lastBody);
+    hint.textContent = t["form.sent"]; hint.style.color = "";
+    document.getElementById("fallback").classList.add("show");
+  });
+  ["f-name","f-email","f-msg"].forEach(function(id){ document.getElementById(id).addEventListener("input", function(){ this.removeAttribute("aria-invalid"); }); });
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    var b = this, t = I18N[lang];
+    try { navigator.clipboard.writeText("office@sbigroup.me\n\n" + lastBody).then(function(){ b.textContent = t["form.copied"]; }); } catch (e) {}
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
