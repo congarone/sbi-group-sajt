@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SBI Group</title>
-<meta name="description" content="SBI Group d.o.o. Podgorica – ekskluzivni uvoznik, distributer i zastupnik evropskih brendova na tržištu Crne Gore. 39 brendova, sva četiri vodeća trgovačka lanca, isporuka 24–48h.">
+<meta name="description" content="SBI Group d.o.o. Podgorica – ekskluzivni uvoznik, distributer i zastupnik evropskih brendova na tržištu Crne Gore. 38 brendova, sva četiri vodeća trgovačka lanca, isporuka 24–48h.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="SBI Group – ekskluzivni distributer evropskih brendova u Crnoj Gori">
-<meta property="og:description" content="Uvoz, distribucija i zastupanje 39 evropskih FMCG brendova. Sva četiri vodeća lanca, 350+ prodajnih objekata, isporuka 24–48h.">
+<meta property="og:description" content="Uvoz, distribucija i zastupanje 38 evropskih FMCG brendova. Sva četiri vodeća lanca, 350+ prodajnih objekata, isporuka 24–48h.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/sbi-logo.png">
 <meta name="theme-color" content="#1B3A5C">
@@ -224,6 +224,65 @@ section{padding-block:clamp(56px,8vw,104px)}
 .fallback{display:none;gap:8px;background:rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;font-size:.92rem}
 .fallback.show{display:grid}
 .fallback button{justify-self:start;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 .85rem var(--display);padding:8px 14px;border-radius:999px;cursor:pointer}
+/* scroll-driven 3D hero */
+.scrolly{height:520vh;position:relative;background:#12283F;color:#fff;padding:0}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#12283F url("assets/hero/f_0001.webp") center/cover no-repeat}
+.veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,40,63,.92) 0%,rgba(18,40,63,.55) 45%,rgba(18,40,63,0) 75%),linear-gradient(0deg,rgba(18,40,63,.6),transparent 30%)}
+.hero-copy{position:absolute;inset:0;display:grid;align-items:center;padding-top:40px;will-change:opacity,transform}
+.hero-copy .wrap{display:grid;gap:22px;justify-items:start}
+.hero-copy h1{max-width:15ch;font-size:clamp(2.4rem,6vw,4.8rem);color:#fff}
+.hero-copy h1 b{color:var(--orange)}
+.hero-copy .lead{color:#C9D6E5;font-size:clamp(1.02rem,1.6vw,1.2rem);max-width:52ch}
+.scrolly .eyebrow{color:var(--orange)}
+.hero-copy .cta{justify-content:flex-start}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.06);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.chapters{list-style:none;margin:0;padding:0;position:absolute;left:max(16px,calc((100% - 1180px)/2));bottom:14vh;width:min(440px,calc(100% - 32px))}
+.chapters li{position:absolute;bottom:0;left:0;right:0;display:grid;gap:6px;padding:22px 24px;border-radius:18px;background:rgba(18,40,63,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);opacity:0;transform:translateY(24px);transition:opacity .35s ease,transform .35s ease}
+.chapters li.on{opacity:1;transform:none}
+.chapters .num{font:800 .8rem var(--display);letter-spacing:.14em;color:var(--orange)}
+.chapters b{font:800 1.6rem/1.1 var(--display)}
+.chapters p{color:#C9D6E5}
+.finale{position:absolute;left:max(16px,calc((100% - 1180px)/2));top:50%;transform:translateY(-40%);display:grid;gap:16px;justify-items:start;opacity:0;transition:opacity .4s ease,transform .4s ease;pointer-events:none;max-width:calc(100% - 32px)}
+.finale.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.finale h2{font-size:clamp(2.2rem,5.5vw,4.4rem);color:#fff;max-width:12ch}
+.finale h2 b{color:var(--orange)}
+.hero-progress{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.12)}
+.hero-progress span{display:block;height:100%;width:0;background:var(--orange)}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:2px;font:700 .72rem var(--display);letter-spacing:.18em;text-transform:uppercase;color:#C9D6E5;transition:opacity .3s}
+.scroll-hint svg{width:20px;height:20px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+@media (max-width:700px){
+  .scrolly{height:420vh}
+  .veil{background:linear-gradient(0deg,rgba(18,40,63,.96) 0%,rgba(18,40,63,.6) 45%,rgba(18,40,63,0) 70%)}
+  .hero-copy{align-items:end;padding-bottom:16vh}
+  .chapters{bottom:12vh}
+}
+@media (orientation: portrait) and (max-aspect-ratio: 10/11){ #heroCanvas{background-image:url("assets/hero-m/f_0001.webp")} }
+@media (prefers-reduced-motion: reduce){
+  .scrolly{height:auto}
+  .sticky{position:relative;height:auto;min-height:100svh}
+  #heroCanvas{background-image:url("assets/hero/f_0180.webp")}
+  @media (orientation: portrait){ #heroCanvas{background-image:url("assets/hero-m/f_0179.webp")} }
+  .chapters,.finale,.hero-progress,.scroll-hint{display:none}
+}
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
+.band b{display:inline-block;min-width:3ch}
+.logo{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.logo:hover{border-color:var(--orange)}
+.card{transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.why .grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.why .card{grid-column:span 2}
+.why .card:nth-child(1),.why .card:nth-child(2){grid-column:span 3}
+.why .card:nth-child(6){grid-column:span 6;border-left:4px solid var(--orange)}
+.why .card:nth-child(1){background:var(--navy);color:#fff;border-color:transparent}
+.why .card:nth-child(1) p{color:var(--on-navy-muted)}
+@media (max-width:900px){.why .grid{grid-template-columns:1fr}.why .card,.why .card:nth-child(1),.why .card:nth-child(2),.why .card:nth-child(6){grid-column:auto}}
 footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.88rem;padding-block:22px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
 </style>
@@ -233,7 +292,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="SBI Group – početna"><img src="assets/sbi-logo.png" alt="SBI Group" width="74" height="42"></a>
+    <a class="brand" href="#pocetak" aria-label="SBI Group – početna"><img src="assets/sbi-logo.png" alt="SBI Group" width="74" height="42"></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Meni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <ul id="menu">
       <li><a href="#brendovi" data-t="nav.brands">Brendovi</a></li>
@@ -251,15 +310,33 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 </header>
 
 <main id="top">
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow" data-t="hero.eyebrow">Uvoz · Distribucija · Zastupanje brendova · Crna Gora</p>
-    <h1 data-t="hero.title">Ekskluzivni distributer <b>evropskih brendova</b> u Crnoj Gori</h1>
-    <p class="lead" data-t="hero.lead">Od 2018. godine uvozimo, distribuiramo i ekskluzivno zastupamo renomirane evropske brendove – od proizvođača do police u svakom dijelu Crne Gore.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#brendovi" data-t="hero.cta1">Pogledaj brendove</a>
-      <a class="btn btn-outline" href="#kontakt" data-t="hero.cta2">Postani partner</a>
+<section class="scrolly" id="pocetak" aria-label="SBI Group – od proizvođača do police">
+  <div class="sticky">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="hero-copy" id="heroCopy">
+      <div class="wrap">
+        <p class="eyebrow" data-t="hero.eyebrow">Uvoz · Distribucija · Zastupanje brendova · Crna Gora</p>
+        <h1 data-t="hero.title">Ekskluzivni distributer <b>evropskih brendova</b> u Crnoj Gori</h1>
+        <p class="lead" data-t="hero.lead">Od 2018. godine uvozimo, distribuiramo i ekskluzivno zastupamo renomirane evropske brendove – od proizvođača do police u svakom dijelu Crne Gore.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#brendovi" data-t="hero.cta1">Pogledaj brendove</a>
+          <a class="btn btn-ghost" href="#kontakt" data-t="hero.cta2">Postani partner</a>
+        </div>
+      </div>
     </div>
+    <ol class="chapters" aria-label="Kako radimo">
+      <li data-a=".12" data-b=".39"><span class="num">01</span><b data-t="ch.1.t">Proizvođač</b><p data-t="ch.1.p">Ekskluzivni ugovori sa evropskim proizvođačima iz više od deset zemalja.</p></li>
+      <li data-a=".40" data-b=".67"><span class="num">02</span><b data-t="ch.2.t">Uvoz i logistika</b><p data-t="ch.2.p">Carinjenje, skladište NTC Logistics u Nikšiću i isporuka za 24–48h.</p></li>
+      <li data-a=".70" data-b=".87"><span class="num">03</span><b data-t="ch.3.t">Na polici</b><p data-t="ch.3.p">Sva četiri vodeća lanca i TT kanal – 350+ prodajnih objekata.</p></li>
+    </ol>
+    <div class="finale" id="heroFinale">
+      <p class="eyebrow" data-t="fin.eyebrow">SBI Group</p>
+      <h2 data-t="fin.title">Od proizvođača <b>do police.</b></h2>
+      <a class="btn btn-primary" href="#kontakt" data-t="hero.cta2">Postani partner</a>
+    </div>
+    <div class="hero-progress" aria-hidden="true"><span id="heroBar"></span></div>
+    <p class="scroll-hint" id="scrollHint" aria-hidden="true"><span data-t="hint">Skroluj</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></p>
   </div>
 </section>
 
@@ -267,7 +344,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <section id="brendovi">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head center reveal">
       <p class="eyebrow" data-t="brands.eyebrow">Portfolio</p>
       <h2 data-t="brands.title">Brand <b>partneri</b></h2>
       <p class="lead" data-t="brands.lead">SBI Group njeguje dugoročne odnose sa evropskim proizvođačima i ekskluzivno zastupa {total} brendova iz više od deset zemalja – plus sezonski novogodišnji program.</p>
@@ -290,10 +367,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <div class="band" aria-label="SBI Group u brojkama">
   <div class="wrap">
-    <div><b>2018.</b><span data-t="stat.founded">godina osnivanja, Podgorica</span></div>
-    <div><b id="statBrands">39</b><span data-t="stat.brands">brendova u portfoliju</span></div>
+    <div><b data-count="2018" data-suffix=".">2018.</b><span data-t="stat.founded">godina osnivanja, Podgorica</span></div>
+    <div><b id="statBrands" data-count="38">38</b><span data-t="stat.brands">brendova u portfoliju</span></div>
     <div><b>4 / 4</b><span data-t="stat.chains">vodeća trgovačka lanca</span></div>
-    <div><b>350+</b><span data-t="stat.pos">prodajnih objekata</span></div>
+    <div><b data-count="350" data-suffix="+">350+</b><span data-t="stat.pos">prodajnih objekata</span></div>
     <div><b>24–48h</b><span data-t="stat.delivery">isporuka širom Crne Gore</span></div>
   </div>
 </div>
@@ -329,12 +406,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <section id="djelatnost">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head center reveal">
       <p class="eyebrow" data-t="what.eyebrow">Distribucija</p>
       <h2 data-t="what.title">Šta <b>radimo</b></h2>
       <p class="lead" data-t="what.lead">Kompletno rješenje za brendove koji žele da budu prisutni na tržištu Crne Gore – od prve palete do redovne prisutnosti na svim policama.</p>
     </div>
-    <div class="grid g3">
+    <div class="grid g3 reveal">
       <div class="card">
         <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div>
         <h3 data-t="what.1.t">Uvoz i distribucija</h3>
@@ -371,11 +448,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <section class="flow" id="kako-radimo">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head center reveal">
       <p class="eyebrow" data-t="flow.eyebrow">Kako radimo</p>
       <h2 data-t="flow.title">Od proizvođača <b>do police</b></h2>
     </div>
-    <div class="steps">
+    <div class="steps reveal">
       <div class="step"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l6 3V9l6 3V6l6 3v12H3z"/></svg></div><h3 data-t="flow.1.t">Proizvođač</h3><p data-t="flow.1.p">Partner brend iz Evrope – ekskluzivni ugovor za Crnu Goru</p></div>
       <div class="step"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><h3 data-t="flow.2.t">Uvoz</h3><p data-t="flow.2.p">Nabavka, transport, carinjenje i kompletna dokumentacija</p></div>
       <div class="step"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-5 9 5v11H3V10z"/><path d="M7 21v-7h10v7"/><path d="M7 17h10"/></svg></div><h3 data-t="flow.3.t">Skladište i logistika</h3><p data-t="flow.3.p">NTC Logistics, Nikšić – isporuka 24–48h u svaki dio Crne Gore</p></div>
@@ -389,7 +466,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 <section class="market" id="trziste">
   <div class="wrap">
     <div>
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow" data-t="market.eyebrow">Distributivna mreža</p>
         <h2 data-t="market.title">Tržište Crne Gore i <b>naša pokrivenost</b></h2>
         <p class="lead" data-t="market.lead">Četiri velika trgovačka lanca drže 80% maloprodajnog tržišta, a preostalih 20% tradicionalna trgovina. Sarađujemo sa sva četiri lanca i najboljim partnerima iz TT kanala.</p>
@@ -406,7 +483,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
         </div>
       </div>
     </div>
-    <div class="chains">
+    <div class="chains reveal">
       <div class="chain"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0V9z"/><path d="M5 13v8h14v-8"/><path d="M10 21v-5h4v5"/></svg></div><div><b>IDEA-CG</b><span data-t="chain.idea">Mercator-CG · najveća maloprodajna mreža u Crnoj Gori</span></div></div>
       <div class="chain"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0V9z"/><path d="M5 13v8h14v-8"/><path d="M10 21v-5h4v5"/></svg></div><div><b>Voli</b><span data-t="chain.voli">vodeći domaći trgovački lanac</span></div></div>
       <div class="chain"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0V9z"/><path d="M5 13v8h14v-8"/><path d="M10 21v-5h4v5"/></svg></div><div><b>HDL</b><span data-t="chain.hdl">Laković · lanac supermarketa</span></div></div>
@@ -418,12 +495,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 
 <section class="why" id="zasto">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head center reveal">
       <p class="eyebrow" data-t="why.eyebrow">Partnerstvo</p>
       <h2 data-t="why.title">Zašto <b>SBI Group</b></h2>
       <p class="lead" data-t="why.lead">Tražite distributera za Crnu Goru? Nudimo kompletno rješenje – od prve palete do redovne prisutnosti na svim policama.</p>
     </div>
-    <div class="grid g3">
+    <div class="grid g3 reveal">
       <div class="card"><div class="icon o" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div><h3 data-t="why.1.t">Ekskluzivnost i fokus</h3><p data-t="why.1.p">Svaki brend vodimo kao svoj – jasna strategija cijena, asortimana i pozicioniranja bez interne konkurencije.</p></div>
       <div class="card"><div class="icon o" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14M15 6v14"/></svg></div><h3 data-t="why.2.t">Pokrivenost cijelog tržišta</h3><p data-t="why.2.p">Sva četiri velika lanca i TT kanal – 350+ prodajnih objekata, uz isporuku 24–48h u svaki dio zemlje.</p></div>
       <div class="card"><div class="icon o" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10v4h3l6 4V6L6 10H3z"/><path d="M16 9a4 4 0 010 6"/></svg></div><h3 data-t="why.3.t">Marketing i merchandising</h3><p data-t="why.3.p">Akcije i letci u lancima, promocije, uredne police i praćenje izlaganja kroz Team Support.</p></div>
@@ -437,7 +514,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 <section class="contact" id="kontakt">
   <div class="wrap">
     <div>
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow" data-t="contact.eyebrow">Kontakt</p>
         <h2 data-t="contact.title">Kontaktirajte <b>nas</b></h2>
         <p class="lead" data-t="contact.lead">Rado ćemo razgovarati o saradnji – bilo da zastupate brend ili tražite dobavljača za svoj objekat.</p>
@@ -493,11 +570,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     ["granarolo","Granarolo","mlijecno"],["sterilgarda","Sterilgarda","mlijecno"],["happy-cow","Happy Cow","mlijecno"],
     ["vitago","VitaGo","pica"],["bitburger","Bitburger","pica"],["nenico","Nenico · Titan","pica"],["kontesa-group","Kontesa Group","pica"],
     ["crik-crok","Crik Crok","grickalice"],["spak","Spak","grickalice"],["novogodisnji-program","%season%","grickalice"],
-    ["dash","Dash","hemija"],["pink","The Pink Stuff","hemija"],["dita","Dita","hemija"],["medix","Medix","hemija"],["perfetto","Perfetto Professional","hemija"],["lavex","Lavex","hemija","txt"],
+    ["dash","Dash","hemija"],["pink","The Pink Stuff","hemija"],["dita","Dita","hemija"],["medix","Medix","hemija"],["perfetto","Perfetto Professional","hemija"],
     ["polleo-sport","Polleo Sport","sport"],["carpona","Carpona","sport"]
   ];
   var TOTAL = BRANDS.filter(function(b){ return b[1] !== "%season%"; }).length;
-  document.getElementById("statBrands").textContent = TOTAL;
+  document.getElementById("statBrands").textContent = TOTAL; document.getElementById("statBrands").dataset.count = TOTAL;
   var MARQUEE = ["loacker","riscossa","granarolo","sacla","nocilla","dash","pink","balocco","st-michel","griesson","barkleys","farchioni","sterilgarda","bitburger","polleo-sport","medix"];
   var I18N = {
     cg: {
@@ -554,7 +631,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "form.err":"Popunite označena polja: ime, ispravan e-mail i poruku.","form.subject":"Upit sa sajta sbigroup.me",
       "form.type":"Upit se odnosi na","form.type.brand":"Zastupanje brenda u Crnoj Gori","form.type.buyer":"Nabavka robe za prodajni objekat","form.type.other":"Ostalo",
       "form.sent":"Otvaramo vaš e-mail program sa pripremljenom porukom…","form.fb":"Ako se e-mail program nije otvorio, kopirajte poruku i pošaljite je na office@sbigroup.me.","form.copy":"Kopiraj poruku","form.copied":"Kopirano ✓",
-      "skip":"Preskoči na sadržaj","mq.pause":"Pauziraj traku sa logoima","mq.play":"Pokreni traku sa logoima"
+      "skip":"Preskoči na sadržaj","hint":"Skroluj",
+      "ch.1.t":"Proizvođač","ch.1.p":"Ekskluzivni ugovori sa evropskim proizvođačima iz više od deset zemalja.",
+      "ch.2.t":"Uvoz i logistika","ch.2.p":"Carinjenje, skladište NTC Logistics u Nikšiću i isporuka za 24–48h.",
+      "ch.3.t":"Na polici","ch.3.p":"Sva četiri vodeća lanca i TT kanal – 350+ prodajnih objekata.",
+      "fin.eyebrow":"SBI Group","fin.title":"Od proizvođača <b>do police.</b>","mq.pause":"Pauziraj traku sa logoima","mq.play":"Pokreni traku sa logoima"
     },
     en: {
       "nav.about":"About","nav.what":"Distribution","nav.market":"Market","nav.brands":"Brands","nav.why":"Partnership","nav.contact":"Contact",
@@ -610,7 +691,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       "form.err":"Please complete the highlighted fields: name, a valid e-mail and message.","form.subject":"Enquiry from sbigroup.me",
       "form.type":"Your enquiry is about","form.type.brand":"Representing a brand in Montenegro","form.type.buyer":"Buying products for a store","form.type.other":"Other",
       "form.sent":"Opening your e-mail client with a prepared message…","form.fb":"If your e-mail client did not open, copy the message and send it to office@sbigroup.me.","form.copy":"Copy message","form.copied":"Copied ✓",
-      "skip":"Skip to content","mq.pause":"Pause logo strip","mq.play":"Play logo strip"
+      "skip":"Skip to content","hint":"Scroll",
+      "ch.1.t":"Producer","ch.1.p":"Exclusive agreements with European producers from more than ten countries.",
+      "ch.2.t":"Import & logistics","ch.2.p":"Customs clearance, NTC Logistics warehouse in Nikšić and 24–48h delivery.",
+      "ch.3.t":"On the shelf","ch.3.p":"All four leading retail chains and traditional trade – 350+ points of sale.",
+      "fin.eyebrow":"SBI Group","fin.title":"From producer <b>to shelf.</b>","mq.pause":"Pause logo strip","mq.play":"Play logo strip"
     }
   };
   var lang = "cg";
@@ -691,6 +776,73 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     var b = this, t = I18N[lang];
     try { navigator.clipboard.writeText("office@sbigroup.me\n\n" + lastBody).then(function(){ b.textContent = t["form.copied"]; }); } catch (e) {}
   });
+
+  // scroll-driven hero: Blender frame sequence drawn on canvas
+  (function(){
+    var N = 180, canvas = document.getElementById("heroCanvas"), ctx = canvas.getContext("2d");
+    var section = document.querySelector(".scrolly"), copy = document.getElementById("heroCopy");
+    var finale = document.getElementById("heroFinale"), bar = document.getElementById("heroBar"), hint = document.getElementById("scrollHint");
+    var chapters = [].slice.call(document.querySelectorAll(".chapters li"));
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var portrait = window.innerHeight > window.innerWidth * 1.1;
+    var dir = portrait ? "assets/hero-m/" : "assets/hero/", step = portrait ? 2 : 1, frames = [], current = -1, ticking = false;
+    function src(i){ return dir + "f_" + String(i).padStart(4, "0") + ".webp"; }
+    function size(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = canvas.clientWidth * dpr; canvas.height = canvas.clientHeight * dpr; current = -1; render();
+    }
+    function draw(i){
+      // nearest loaded frame at or below i
+      for (var k = i; k >= 1; k--) { var im = frames[k]; if (im && im.complete && im.naturalWidth) break; }
+      if (k < 1 || k === current) return; current = k;
+      var cw = canvas.width, ch = canvas.height, iw = im.naturalWidth, ih = im.naturalHeight;
+      var sc = Math.max(cw / iw, ch / ih), w = iw * sc, h = ih * sc;
+      ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+    function progress(){
+      var r = section.getBoundingClientRect(), total = section.offsetHeight - window.innerHeight;
+      return Math.min(1, Math.max(0, -r.top / total));
+    }
+    function render(){
+      ticking = false;
+      var p = progress();
+      var f = Math.max(1, Math.min(N, Math.round(1 + p * (N - 1))));
+      if (step > 1) f = Math.max(1, f - (f - 1) % step);
+      draw(f);
+      var c = Math.max(0, 1 - p * 6);
+      copy.style.opacity = c; copy.style.transform = "translateY(" + (-p * 160) + "px)"; copy.style.visibility = c ? "visible" : "hidden";
+      hint.style.opacity = p > 0.02 ? 0 : 1;
+      bar.style.width = (p * 100) + "%";
+      chapters.forEach(function(li){ li.classList.toggle("on", p >= +li.dataset.a && p < +li.dataset.b); });
+      finale.classList.toggle("on", p >= 0.88);
+    }
+    function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+    if (reduce) return;
+    // load first frame, then the rest in order of need
+    for (var i = 1; i <= N; i += (i === 1 ? step : step)) {
+      (function(i){ var im = new Image(); im.decoding = "async"; im.onload = function(){ if (Math.abs(i - current) < 3 || current < 1) render(); }; im.src = src(i); frames[i] = im; })(i);
+    }
+    if (!frames[N] && (N - 1) % step === 0) { var last = new Image(); last.src = src(N); frames[N] = last; }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", size);
+    size();
+  })();
+
+  // reveal on scroll + stat count-up
+  (function(){
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!("IntersectionObserver" in window) || reduce) { document.querySelectorAll(".reveal").forEach(function(e){ e.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -10% 0px" });
+    document.querySelectorAll(".reveal").forEach(function(e){ io.observe(e); });
+    var co = new IntersectionObserver(function(es){ es.forEach(function(e){
+      if (!e.isIntersecting) return; co.unobserve(e.target);
+      var el = e.target, to = +el.dataset.count, from = to > 1000 ? to - 8 : 0, suf = el.dataset.suffix || "", t0 = null;
+      function tick(t){ t0 = t0 || t; var k = Math.min(1, (t - t0) / 1200), v = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))); el.textContent = v + suf; if (k < 1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+      setTimeout(function(){ el.textContent = to + suf; }, 1600); // final value even if rAF is throttled
+    }); }, { threshold: .6 });
+    document.querySelectorAll("[data-count]").forEach(function(e){ co.observe(e); });
+  })();
 
   document.getElementById("year").textContent = new Date().getFullYear();
   applyLang();
